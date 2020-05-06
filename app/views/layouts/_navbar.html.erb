@@ -1,0 +1,21 @@
+<header class="mb-4">
+  <nav class = "navbar navbar-expand-sm navbar-dark bg-dark">
+    <a href= "<%= root_path %>" class="navbar-brand">たびしまーす</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"></div>
+      <ul class="navbar-nav">
+        <% if logged_in? %>          
+          <li class="nav-item"><a href="#" class="nav-link">わたしの計画</a></li>
+          <li class="nav-item"><a href="<%= new_tour_path %>" class="nav-link">計画をつくる</a></li>
+          <li class="nav-item"><a href="<%= logout_path %>" class="nav-link">ログアウト</a></li>
+        <% else %>
+          <li class="nav-item"><a href= "<%= new_user_path %>" class="nav-link">アカウント作成</a></li>
+          <li class="nav-item"><a href= "<%= login_path %>" class="nav-link">ログイン</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

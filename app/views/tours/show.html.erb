@@ -1,0 +1,17 @@
+<%= @tour.tourname %>の行程
+
+<%= link_to "旅行名・日付の変更", edit_tour_path %>
+
+<% @itinerary.each do |itinerary| %>
+  <%= itinerary.depart_time %>
+  <%= itinerary.depart_place %>
+  <%= itinerary.moving_way %>
+  <%= itinerary.todo %>
+  <%= itinerary.note %>
+  <%= link_to "編集" %>
+  <%= link_to "削除" %>
+<% end %>
+
+<%= link_to "行程を入力する", new_itinerary_path %>
+
+<%= link_to "わたしの計画一覧", tours_user_path %>
