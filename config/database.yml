@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: tabishimaas_production
   username: tabishimaas
   password: <%= ENV['TABISHIMAAS_DATABASE_PASSWORD'] %>

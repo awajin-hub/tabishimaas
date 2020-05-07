@@ -5,7 +5,7 @@ class ItinerariesController < ApplicationController
   end
 
   def create
-    @tour = tours.find(params[:tour_id])
+    @tour = Tour.find(params[:tour_id])
     @itinerary = Itinerary.new(itinerary_params)
     if @itinerary.save
       flash[:success]="行程を登録しました"
