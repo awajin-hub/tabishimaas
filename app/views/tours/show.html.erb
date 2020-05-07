@@ -1,17 +1,22 @@
-<%= @tour.tourname %>の行程
+<h1><%= @tour.tourname %>の行程</h1>
 
 <%= link_to "旅行名・日付の変更", edit_tour_path %>
 
-<% @itinerary.each do |itinerary| %>
-  <%= itinerary.depart_time %>
-  <%= itinerary.depart_place %>
-  <%= itinerary.moving_way %>
-  <%= itinerary.todo %>
-  <%= itinerary.note %>
-  <%= link_to "編集" %>
-  <%= link_to "削除" %>
-<% end %>
 
-<%= link_to "行程を入力する", new_itinerary_path %>
+<div class="card">
+  <div class="card-body">
+    <% @itinerary.each do |itinerary| %>
+      <h4 class="card-title"><%= itinerary.todo %></h4>
+      <h6 class="card-subtitle mb-2 text-muted">出発時間：<%= itinerary.depart_time %></h6>
+      <p class="card-text">出発場所:<%= itinerary.depart_place %></p>
+      <p class="card-text">交通手段:<%= itinerary.moving_way %></p>
+      <p class="card-text">メモ:<%= itinerary.moving_way %></p>
+      <a href="#" class="card-link">編集</a>
+      <a href="#" class="card-link">削除</a>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "わたしの計画一覧", tours_user_path %>
+<a class="btn btn-primary btn-block" href="<%= new_itinerary_path(tour_id: @tour.id) %>" role="button">行程を入力する</a>
+
+<a class="btn btn-light btn-block" href="<%= tours_user_path %>" role="button">わたしの計画一覧</a>

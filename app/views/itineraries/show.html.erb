@@ -1,30 +1,19 @@
 <h1><%= @tour.tourname %></h1>
+<ul>
+  <li>場所：<%= @tour.place %></li>
+  <li>日程：<%= @tour.date_start %>~<%= @tour.date_end %></li>
+</ul>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>出発日・時間</th>
-      <th>出発場所</th>
-      <th>移動手段</th>
-      <th>すること</th>
-      <th>メモ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @   each.do || %>
-        <th>1</th>
-        <td><%= %></td>
-        <td>Qiita</td>
-        <td>@Hanaq</td>
-        <td></td>
-      <% end %>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Taro</td>
-      <td>Qiita</td>
-      <td>@TaroQ</td>
-      </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-body">
+    <% @itinerary.each do |itinerary| %>
+      <h4 class="card-title"><%= itinerary.todo %></h4>
+      <h6 class="card-subtitle mb-2 text-muted">出発時間：<%= itinerary.depart_time %></h6>
+      <p class="card-text">出発場所:<%= itinerary.depart_place %></p>
+      <p class="card-text">交通手段:<%= itinerary.moving_way %></p>
+      <p class="card-text">メモ:<%= itinerary.moving_way %></p>
+    <% end %>
+  </div>
+</div>
+
+<a class="btn btn-light btn-block" href="<%= tours_path %>" role="button">みんなの計画一覧</a>

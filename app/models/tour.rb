@@ -8,7 +8,7 @@ class Tour < ApplicationRecord
   
   #validate :date_check
   
-  has_many :itineraries
+  has_many :itineraries, :dependent => :destroy
   
   private
   

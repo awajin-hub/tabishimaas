@@ -9,10 +9,17 @@
     <li class="nav-item"><a href="<%= tours_user_path(current_user) %>" class="nav-link <%= 'active' if current_page?(tours_user_path(current_user)) %>">私の計画</a></li>
   </ul>
   
-  <% @tours.each do |tours| %>
-    <li><%= tours.tourname %></li>
-    <li><%= link_to "詳細", "#" %></li>
-  <% end %>
+
+  <div class="card">
+  <div class="card-body">
+    <% @tours.each do |tours| %>
+      <h4 class="card-title"><%= tours.tourname %></h4>
+      <h6 class="card-subtitle mb-2 text-muted"><%= tours.place %></h6>
+      <p class="card-text"><%= tours.date_start %>~<%= tours.date_end %></p>
+      <a href="<%= itinerary_path(tours) %>" class="card-link">詳細の行程</a>
+    <% end %>
+  </div>
+</div>
   
 <% else %>
   <h1>たびしまーすへようこそ</h1>

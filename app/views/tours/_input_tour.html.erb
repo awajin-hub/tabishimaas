@@ -1,24 +1,24 @@
 <div>
   <%= form_with(model: tour, local: true) do |f| %>
   
-  <div>
+  <div class="form-group">
     <%= f.label :tourname, "旅行名" %>
-    <%= f.text_field :tourname %>
+    <%= f.text_field :tourname, class: 'form-control' %>
   </div>
   
-  <div>
+  <div class="form-group">
     <%= f.label :place, "旅行場所" %>
-    <%= f.text_field :place %>
+    <%= f.text_field :place, class: 'form-control' %>
   </div>
   
-  <div>
+  <div class="form-group">
     <%= f.label :date_start, "旅行開始日" %>
-    <%= f.date_field :date_start %>
+    <%= f.date_field :date_start, class: 'form-control' %>
   </div>
   
-  <div>
+  <div class="form-group">
     <%= f.label :date_end, "旅行終了日" %>
-    <%= f.date_field :date_end %>
+    <%= f.date_field :date_end, class: 'form-control' %>
   </div>
   
     <%= f.submit "次へ", class: "btn btn-primary btn-block" %>

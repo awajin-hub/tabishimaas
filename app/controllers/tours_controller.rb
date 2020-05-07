@@ -3,7 +3,6 @@ class ToursController < ApplicationController
   def show
     @tour = Tour.find_by(id: params[:id])
     @itinerary = @tour.itineraries.where(tour_id: params[:id])
-    #@process = Tour.processes.order()
   end
 
   def create
@@ -41,6 +40,7 @@ class ToursController < ApplicationController
   end
 
   def destroy
+    @tour = current_user.tours.find_by(id: params[:id])
     @tour.destroy
     flash[:success] = "計画は正常に削除されました"
     redirect_back(fallback_location: root_path)
@@ -53,7 +53,7 @@ class ToursController < ApplicationController
   end
   
   def correct_user
-    @tour = current_user.tours.find_by(id: params[:id])
+    #@tour = current_user.tours.find_by(id: params[:id])
     if !@tour
       redirect_to root_url
     end
