@@ -42,7 +42,7 @@ before_action :correct_user_tourcreate, only: [:create, :update]
 
   def show
     @tour = Tour.find(params[:id])
-    @itinerary = @tour.itineraries.where(params[:id])
+    @itinerary = @tour.itineraries.where(id: params[:id])
   end
   
   private
