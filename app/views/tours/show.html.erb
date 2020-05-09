@@ -11,8 +11,8 @@
       <p class="card-text">出発場所:<%= itinerary.depart_place %></p>
       <p class="card-text">交通手段:<%= itinerary.moving_way %></p>
       <p class="card-text">メモ:<%= itinerary.moving_way %></p>
-      <a href="#" class="card-link">編集</a>
-      <a href="#" class="card-link">削除</a>
+      <%= link_to "編集", edit_itinerary_path(itinerary, tour_id: @tour.id) %>
+      <%= link_to "削除", itinerary, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </div>
 </div>

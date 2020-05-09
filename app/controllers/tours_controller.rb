@@ -1,7 +1,8 @@
 class ToursController < ApplicationController
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:show, :destroy, :edit, :update]
   
   def show
-    @tour = Tour.find_by(id: params[:id])
     @itinerary = @tour.itineraries.where(tour_id: params[:id])
   end
 
@@ -25,12 +26,10 @@ class ToursController < ApplicationController
   end
 
   def edit
-    @tour = current_user.tours.find(params[:id])
   end
 
   def update
-    @tour = current_user.tours.find(params[:id])
-    if @tour.save
+    if @tour.update(tour_params)
       flash[:success] = "計画を変更しました"
       redirect_to @tour
     else
@@ -40,7 +39,6 @@ class ToursController < ApplicationController
   end
 
   def destroy
-    @tour = current_user.tours.find_by(id: params[:id])
     @tour.destroy
     flash[:success] = "計画は正常に削除されました"
     redirect_back(fallback_location: root_path)
@@ -53,7 +51,7 @@ class ToursController < ApplicationController
   end
   
   def correct_user
-    #@tour = current_user.tours.find_by(id: params[:id])
+    @tour = current_user.tours.find_by(id: params[:id])
     if !@tour
       redirect_to root_url
     end

@@ -1,15 +1,20 @@
 class ItinerariesController < ApplicationController
+
+before_action :require_user_logged_in
+before_action :correct_user_itinerary, only: [:destroy, :update, :edit]
+before_action :correct_user_tournew, only: [:new, :edit]
+before_action :correct_user_tourcreate, only: [:create, :update]
+
+
   def new
-    @tour = Tour.find(params[:tour_id])
     @itinerary = Itinerary.new
   end
 
   def create
-    @tour = Tour.find(params[:tour_id])
     @itinerary = Itinerary.new(itinerary_params)
     if @itinerary.save
       flash[:success]="行程を登録しました"
-      redirect_to tour_path(@tour)
+      redirect_to @tour
     else
       flash[:danger]="行程を登録できませんでした"
       render :new
@@ -20,6 +25,13 @@ class ItinerariesController < ApplicationController
   end
 
   def update
+    if @itinerary.update(itinerary_params)
+      flash[:sucess] = "更新に成功しました"
+      redirect_to @tour
+    else
+      flash[:danger] = "更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
@@ -31,16 +43,30 @@ class ItinerariesController < ApplicationController
   def show
     @tour = Tour.find(params[:id])
     @itinerary = @tour.itineraries.where(params[:id])
-    @itineraries = @tour.itineraries.order(id: :desc).page(params[:page])
   end
   
   private
   
-  def correct_user
-    @tour = current_user.tours.find_by(id: params[:id])
-    @itinerary = @tour.itineraries.find_by(id: params[:id])
+  def correct_user_itinerary
+    @itinerary = Itinerary.find_by(id: params[:id])
     
     if !@itinerary
+      redirect_to root_url
+    end 
+  end
+  
+  def correct_user_tournew
+    @tour = Tour.find(params[:tour_id])
+    
+    if !@tour
+      redirect_to root_url
+    end 
+  end
+
+  def correct_user_tourcreate
+    @tour = Tour.find(params[:itinerary][:tour_id])
+    
+    if !@tour
       redirect_to root_url
     end 
   end

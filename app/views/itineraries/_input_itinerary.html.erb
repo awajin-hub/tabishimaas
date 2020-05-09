@@ -1,0 +1,37 @@
+<h3>旅行期間：<%= tour.date_start %>~<%= tour.date_end %></h3>
+
+<div>
+  <%= form_with(model: itinerary, local: true) do |f| %>
+  
+  <div class="form-group">
+    <%= f.label :depart_time, "出発日・時間" %>
+    <%= f.datetime_field :depart_time, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :depart_place, "出発場所" %>
+    <%= f.text_field :depart_place, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :moving_way, "移動手段" %>
+    <%= f.text_field :moving_way, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :todo, "すること" %>
+    <%= f.text_field :todo, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :note, "メモ" %>
+    <%= f.text_field :note, class: 'form-control' %>
+  </div>
+  
+  <%= f.hidden_field :tour_id, :value => tour.id %>
+  
+  <%= f.submit "次へ", class: "btn btn-primary btn-block" %>
+  
+  <% end %>
+</div>
+

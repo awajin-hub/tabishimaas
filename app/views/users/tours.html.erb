@@ -17,7 +17,7 @@
       <h6 class="card-subtitle mb-2 text-muted"><%= tours.place %></h6>
       <p class="card-text"><%= tours.date_start %>~<%= tours.date_end %></p>
       <a href="<%= tour_path(tours) %>" class="card-link">詳細</a>
-        <%= link_to "削除", tours, method: :delete, data: { confirm: "You sure?" } %>
+      <%= link_to "削除", tours, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </div>
 </div>

@@ -1,41 +1,5 @@
 <h1>
 <%= @tour.tourname %>の行程を作成する
-
 </h1>
 
-<div>
-  <%= form_with(model: @itinerary, local: true) do |f| %>
-  
-  <div class="form-group">
-    <%= f.label :depart_time, "出発日・時間" %>
-    <%= f.datetime_field :depart_time, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :depart_place, "出発場所" %>
-    <%= f.text_field :depart_place, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :moving_way, "移動手段" %>
-    <%= f.text_field :moving_way, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :todo, "すること" %>
-    <%= f.text_field :todo, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :note, "メモ" %>
-    <%= f.text_field :note, class: 'form-control' %>
-  </div>
-  
-  <%= f.hidden_field :tour_id, :value => @tour %>
-  
-  <%= f.submit "次へ", class: "btn btn-primary btn-block" %>
-  
-  <% end %>
-
-    
-</div>
+<%= render "input_itinerary", tour: @tour, itinerary: @itinerary %>
