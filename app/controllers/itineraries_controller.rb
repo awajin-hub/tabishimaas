@@ -56,7 +56,7 @@ before_action :correct_user_tourcreate, only: [:create, :update]
   end
   
   def correct_user_tournew
-    @tour = Tour.find(params[:tour_id])
+    @tour = current_user.tours.find(params[:tour_id])
     
     if !@tour
       redirect_to root_url

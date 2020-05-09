@@ -16,7 +16,9 @@
       <h4 class="card-title"><%= tours.tourname %></h4>
       <h6 class="card-subtitle mb-2 text-muted"><%= tours.place %></h6>
       <p class="card-text"><%= tours.date_start %>~<%= tours.date_end %></p>
-      <a href="<%= itinerary_path(tours) %>" class="card-link">詳細の行程</a>
+      <div class="mb-5">
+        <a href="<%= itinerary_path(tours) %>" class="card-link">詳細の行程</a>
+      </div>
     <% end %>
   </div>
 </div>

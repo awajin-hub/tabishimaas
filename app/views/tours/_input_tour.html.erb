@@ -1,6 +1,8 @@
 <div>
   <%= form_with(model: tour, local: true) do |f| %>
   
+  <%= render 'layouts/error_messages', model: f.object %>
+  
   <div class="form-group">
     <%= f.label :tourname, "旅行名" %>
     <%= f.text_field :tourname, class: 'form-control' %>

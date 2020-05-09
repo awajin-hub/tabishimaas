@@ -3,6 +3,8 @@
 <div>
   <%= form_with(model: itinerary, local: true) do |f| %>
   
+  <%= render 'layouts/error_messages', model: f.object %>
+  
   <div class="form-group">
     <%= f.label :depart_time, "出発日・時間" %>
     <%= f.datetime_field :depart_time, class: 'form-control' %>
