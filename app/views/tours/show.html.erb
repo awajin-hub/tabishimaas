@@ -3,7 +3,7 @@
 <%= link_to "旅行名・日付の変更", edit_tour_path %>
 
 <% @itinerary.each do |itinerary| %>
-  <div class="card">
+  <div class="card my-3">
     <div class="card-body">
       <h4 class="card-title"><%= itinerary.todo %></h4>
       <h6 class="card-subtitle mb-2 text-muted">出発時間：<%= itinerary.depart_time %></h6>

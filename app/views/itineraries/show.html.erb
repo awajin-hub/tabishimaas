@@ -4,7 +4,7 @@
   <li>日程：<%= @tour.date_start %>~<%= @tour.date_end %></li>
 </ul>
 
-<div class="card">
+<div class="card my-3">
   <div class="card-body">
     <% @itinerary.each do |itinerary| %>
       <h4 class="card-title"><%= itinerary.todo %></h4>
