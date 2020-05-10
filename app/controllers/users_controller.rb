@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :require_user_logged_in
+before_action :require_user_logged_in, only: [:tours]
 
   def new
     @user = User.new
