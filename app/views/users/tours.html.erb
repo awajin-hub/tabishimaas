@@ -9,19 +9,20 @@
     <li class="nav-item"><a href="<%= tours_user_path(current_user) %>" class="nav-link <%= 'active' if current_page?(tours_user_path(current_user)) %>">私の計画</a></li>
   </ul>
   
+<% @tours.each do |tours| %>
+  <div class="card">
+    <div class="card-body">
 
-<div class="card">
-  <div class="card-body">
-    <% @tours.each do |tours| %>
       <h4 class="card-title"><%= tours.tourname %></h4>
       <h6 class="card-subtitle mb-2 text-muted"><%= tours.place %></h6>
       <p class="card-text"><%= tours.date_start %>~<%= tours.date_end %></p>
-      <div class="mb-5">
+      <div class="mb-auto">
         <a href="<%= tour_path(tours) %>" class="card-link">詳細</a>
         <%= link_to "削除", tours, method: :delete, data: { confirm: "You sure?" } %>
       </div>
-    <% end %>
+
+    </div>
   </div>
-</div>
+<% end %>
 
 

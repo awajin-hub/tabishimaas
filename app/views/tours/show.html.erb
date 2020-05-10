@@ -2,22 +2,21 @@
 
 <%= link_to "旅行名・日付の変更", edit_tour_path %>
 
-
-<div class="card">
-  <div class="card-body">
-    <% @itinerary.each do |itinerary| %>
+<% @itinerary.each do |itinerary| %>
+  <div class="card">
+    <div class="card-body">
       <h4 class="card-title"><%= itinerary.todo %></h4>
       <h6 class="card-subtitle mb-2 text-muted">出発時間：<%= itinerary.depart_time %></h6>
       <p class="card-text">出発場所:<%= itinerary.depart_place %></p>
       <p class="card-text">交通手段:<%= itinerary.moving_way %></p>
       <p class="card-text">メモ:<%= itinerary.moving_way %></p>
-      <div class="mb-5">
+      <div class="mb-2">
         <%= link_to "編集", edit_itinerary_path(itinerary, tour_id: @tour.id) %>
         <%= link_to "削除", itinerary, method: :delete, data: { confirm: "You sure?" } %>
       </div>
-    <% end %>
+     </div>
   </div>
-</div>
+ <% end %>
 
 <a class="btn btn-primary btn-block" href="<%= new_itinerary_path(tour_id: @tour.id) %>" role="button">行程を入力する</a>
 
